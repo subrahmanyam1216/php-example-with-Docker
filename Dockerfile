@@ -3,8 +3,15 @@ FROM php:7-apache
 MAINTAINER Samuel ROZE <samuel.roze@gmail.com>
 
 # PHP extension
-RUN requirements="zlib1g-dev libicu-dev git curl" \
-    && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
+#RUN requirements="zlib1g-dev libicu-dev git curl" \
+   # && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
+   # && docker-php-ext-install pdo_mysql \
+    #&& docker-php-ext-install intl \
+    #&& docker-php-ext-install zip \
+    #&& apt-get purge --auto-remove -y
+
+    RUN requirements="zlib1g-dev libicu-dev git curl" \
+    && apt-get update && apt-get install -y $requirements \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install intl \
     && docker-php-ext-install zip \
